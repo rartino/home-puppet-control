@@ -11,7 +11,7 @@ mod 'locales',
     :ref => 'beec43f6f079d8993087b105677d3847380ba5c3' #2.5.1
 
 mod 'samba',
-    :git => 'https://github.com/kakwa/puppet-samba.git'
+    :git => 'https://github.com/kakwa/puppet-samba.git',
     :ref => '7ce3dd40bfc667a697151d9e79ba6e2982160db5' #2.0.0
 
 # local module /etc/puppet/code/local-modules/public/hostname

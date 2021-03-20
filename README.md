@@ -1,0 +1,1 @@
+# Home puppet control repository

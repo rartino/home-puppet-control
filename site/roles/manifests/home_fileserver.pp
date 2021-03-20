@@ -13,7 +13,7 @@ class roles::home_fileserver {
         dns_proxy               => 'no',
         usershare_allow_guests  => 'yes',
         bind_interfaces_only    => 'no',
-        security                => 'share',
+        security                => 'user',
   }
 
   samba::server::share {'disks':

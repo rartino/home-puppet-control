@@ -7,6 +7,7 @@ fi
 
 if [ -z "$1" ]; then
     echo "Usage: $0 <system_id>"
+    exit 1
 fi
 SYSTEM_ID="$1"
 

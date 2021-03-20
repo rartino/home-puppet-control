@@ -37,7 +37,11 @@ export RUBYOPT='-W:no-deprecated'
 
 mkdir -p /root/control
 cat > /root/control/puppet-update <<EOF
+cd /etc/puppet/code
 r10k deploy environment -p -v
 puppet apply /etc/puppet/code/environments/production/manifests/site.pp
 EOF
 chmod +x /root/control/puppet-update
+echo "Now run the script"
+echo "  /root/control/puppet-update"
+echo "to setup the system"

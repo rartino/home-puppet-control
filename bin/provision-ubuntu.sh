@@ -30,6 +30,6 @@ cat > r10k.yaml <<EOF
 EOF
 export RUBYOPT='-W:no-deprecated'
 r10k deploy environment -p -v
-# puppet apply
+# puppet apply /etc/puppet/code/environments/production/manifests/site.pp
 
-#/etc/puppet/code/environments/production/manifests/site.pp --confdir=/etc/puppet/
+#--confdir=/etc/puppet/

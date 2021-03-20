@@ -5,7 +5,7 @@ defaults:
   data_hash: yaml_data
 hierarchy:
   - name: "Per system data"
-    path: "systems/%{::fqdn}.yaml"
+    path: "systems/%{::system_id}.yaml"
 
   - name: "Common Data"
     path: "common.yaml"

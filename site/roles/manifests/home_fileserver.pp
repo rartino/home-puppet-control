@@ -43,7 +43,7 @@ class roles::home_fileserver {
 #    force_group               => 'group',
 #    force_user                => 'user',
 #    copy                      => 'some-other-share',
-    hosts_allow               => '127.0.0.1, 192.168.1.'
+    hosts_allow               => '127.0.0.1, 192.168.1.',
     acl_allow_execute_always  => true,
   }
 

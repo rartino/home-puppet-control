@@ -1,4 +1,4 @@
 ---
 environment: production
-classes:
+systems:
   - systems::minimoose

@@ -19,7 +19,7 @@ LoginGraceTime 20
 PermitRootLogin no
 StrictModes yes
 # No remote password login
-PasswordAuthentication no
+PasswordAuthentication yes
 
 RSAAuthentication yes
 PubkeyAuthentication yes

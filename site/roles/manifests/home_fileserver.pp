@@ -29,9 +29,9 @@ class roles::home_fileserver {
         security                => 'user',
   }
 
-  samba::server::share {'media':
-    comment                   => 'Media',
-    path                      => '/media',
+  samba::server::share {'disks':
+    comment                   => 'Disks',
+    path                      => '/disks',
     guest_only                => true,
     guest_ok                  => true,
     guest_account             => "guest",
@@ -45,6 +45,18 @@ class roles::home_fileserver {
 #    copy                      => 'some-other-share',
     hosts_allow               => '127.0.0.1, 192.168.1.',
     acl_allow_execute_always  => true,
+  }
+
+  firewall { '100 allow samba access: netbios':
+    port   => '139',
+    proto  => 'tcp',
+    action => 'accept',
+  }
+
+  firewall { '100 allow samba access: smbd':
+    port   => '445',
+    proto  => 'tcp',
+    action => 'accept',
   }
 
 }

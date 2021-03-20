@@ -33,10 +33,13 @@ cat > r10k.yaml <<EOF
     remote: 'https://github.com/rartino/home-puppet-control.git'
     basedir: 'environments'
 EOF
-export RUBYOPT='-W:no-deprecated'
+export RUBYOPT='-W0'
 
 mkdir -p /root/control
 cat > /root/control/puppet-update <<EOF
+#!/bin/bash
+
+export RUBYOPT='-W0'
 cd /etc/puppet/code
 r10k deploy environment -p -v
 puppet apply /etc/puppet/code/environments/production/manifests/site.pp

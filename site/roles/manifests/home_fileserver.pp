@@ -7,71 +7,44 @@ class roles::home_fileserver {
     servers => [ 'pool.ntp.org' ],
   }
 
-  class { '::samba::classic':
-    domain             => 'DC',
-    realm              => 'dc.home',
-    smbname            => 'SMB2',
-    sambaloglevel      => 1,
-    logtosyslog        => true,
-    sambaclassloglevel => {
-      'smb'     => 2,
-      'idmap'   => 2,
-      'winbind' => 2,
-    },
-    globaloptions      => {
-      'winbind cache time' => 10,
-    },
-#    globaloptions       => {},
-#    globalabsentoptions => [],
+  class {'samba::server':
+        workgroup               => 'WORKGROUP',
+        server_string           => "${::hostname}",
+        dns_proxy               => 'no',
+        log_file                => '/var/log/samba/log.%m',
+        max_log_size            => '1000',
+        syslog                  => '0',
+        panic_action            => '/usr/share/samba/panic-action %d',
+        server_role             => 'standalone server',
+        passdb_backend          => 'tdbsam',
+        obey_pam_restrictions   => 'yes',
+        unix_password_sync      => 'yes',
+        passwd_program          => '/usr/bin/passwd %u',
+        passwd_chat             => '*Enter\snew\s*\spassword:* %n\n *Retype\snew\s*\spassword:* %n\n *password\supdated\ssuccessfully* .',
+        pam_password_change     => 'yes',
+        map_to_guest            => 'Never',
+        usershare_allow_guests  => 'yes',
+        #interfaces             => "eth0 lo",
+        bind_interfaces_only    => 'no',
+        security                => 'user',
   }
 
-  # recover uid and gid from Domain Controler (unix attributes)
-  ::samba::idmap { 'Domain DC':
-    domain      => 'DC',
-    idrangemin  => 10000,
-    idrangemax  => 19999,
-    backend     => 'ad',
-    schema_mode => 'rfc2307',
+  samba::server::share {'media':
+    comment                   => 'Media',
+    path                      => '/media',
+    guest_only                => true,
+    guest_ok                  => true,
+    guest_account             => "guest",
+    browsable                 => true,
+    create_mask               => 0777,
+    force_create_mask         => 0777,
+    directory_mask            => 0777,
+    force_directory_mask      => 0777,
+#    force_group               => 'group',
+#    force_user                => 'user',
+#    copy                      => 'some-other-share',
+    hosts_allow               => '127.0.0.1, 192.168.1.'
+    acl_allow_execute_always  => true,
   }
 
-  # a default map (*) is needed for idmap to work
-  ::samba::idmap { 'Domain *':
-    domain     => '*',
-    idrangemin => 100000,
-    idrangemax => 199999,
-    backend    => 'tdb',
-  }
-  ::samba::share { 'Test Share':
-    path    => '/media/',
-    mode    => '0750',
-    owner   => 'root',
-    group   => 'domain users',
-    options => {
-      'comment'   => 'Media',
-      'browsable' => 'Yes',
-      'read only' => 'No',
-    },
-    acl     =>
-      [
-        'group::rwx',
-        'd:group:wtest group:rwx',
-        'd:group:rtest group:r-x',
-        'mask::rwx' ,
-        'other::---',
-        'user::rwx',
-      ],
-  }
-
-  ::samba::share { 'homes':
-    path    => '/srv/home/home_%U',
-    options => {
-      'comment'        => 'Home Folder',
-      'browsable'      => 'No',
-      'read only'      => 'No',
-      'directory mask' => '700',
-      'create mask'    => '700',
-      'root preexec'   => "smb-create-home.sh -d \
-/srv/home/home_%U -u %U -m 700",
-    },
-  }
 }

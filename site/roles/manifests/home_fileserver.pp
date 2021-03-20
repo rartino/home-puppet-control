@@ -19,7 +19,7 @@ class roles::home_fileserver {
   samba::server::share {'disks':
     comment                   => 'Disks',
     path                      => '/disks',
-    guest_only                => true,
+    guest_only                => false,
     guest_ok                  => true,
     guest_account             => "guest",
     browsable                 => true,
@@ -27,7 +27,9 @@ class roles::home_fileserver {
     force_create_mask         => 0777,
     directory_mask            => 0777,
     force_directory_mode      => 0777,
-    hosts_allow               => '127.0.0.1, 192.168.1.'
+    hosts_allow               => '127.0.0.1, 192.168.1.',
+    writeable                 => no
+    read_list                 => "@users"
   }
 
   firewall { '100 allow samba access':

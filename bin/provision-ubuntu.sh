@@ -25,7 +25,7 @@ echo "system_id=$SYSTEM_ID" > /etc/facter/facts.d/system_id.txt
 cat > r10k.yaml <<EOF
 :sources:
   :base:
-    remote: 'https://gitlab.liu.se/mdi/puppet-control.git'
+    remote: 'https://github.com/rartino/home-puppet-control.git'
     basedir: 'environments'
 EOF
 export RUBYOPT='-W:no-deprecated'

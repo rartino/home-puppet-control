@@ -2,7 +2,7 @@ forge 'http://forge.puppet.com'
 
 mod 'puppetlabs/stdlib',  '6.0.0'
 mod 'puppetlabs/concat',  '6.0.0'
-mod 'puppetlabs/translate', '2.0.0'
+mod 'puppetlabs/translate', '1.2.0'
 
 mod 'puppetlabs/ntp', '8.5.0'
 mod 'puppetlabs/firewall', '2.8.1'
@@ -13,6 +13,6 @@ mod 'locales',
 
 mod 'samba',
     :git => 'https://github.com/ajjahn/puppet-samba.git',
-    :ref => '0cc76f3930cea9dd7200ff6e1c6917d68f3ee5ea' #0.5.0
+    :ref => '7082cd5ca6de4cfbf18128dd33d1e33c6c04df5c' #0.5.0+
 
 # local module /etc/puppet/code/local-modules/public/hostname

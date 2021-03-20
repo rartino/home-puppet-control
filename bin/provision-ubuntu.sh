@@ -13,6 +13,7 @@ SYSTEM_ID="$1"
 SECRETS_PATH="$2"
 
 cp -rp "$SECRETS_PATH" /root/secrets
+ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 apt-get update -y
 apt-get install -y git puppet r10k

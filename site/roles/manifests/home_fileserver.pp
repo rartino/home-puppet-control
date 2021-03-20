@@ -47,14 +47,8 @@ class roles::home_fileserver {
     acl_allow_execute_always  => true,
   }
 
-  firewall { '100 allow samba access: netbios':
-    port   => '139',
-    proto  => 'tcp',
-    action => 'accept',
-  }
-
-  firewall { '100 allow samba access: smbd':
-    port   => '445',
+  firewall { '100 allow samba access':
+    dport   => [139, 445],
     proto  => 'tcp',
     action => 'accept',
   }

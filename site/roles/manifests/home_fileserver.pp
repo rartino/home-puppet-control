@@ -28,7 +28,7 @@ class roles::home_fileserver {
     directory_mask            => 0777,
     force_directory_mode      => 0777,
     hosts_allow               => '127.0.0.1, 192.168.1.',
-    writeable                 => no
+    writeable                 => false,
     read_list                 => "@users"
   }
 

@@ -16,7 +16,7 @@ mod 'samba',
     :ref => '7ce3dd40bfc667a697151d9e79ba6e2982160db5' #2.0.0
 
 mod 'herculesteam-augeasproviders_pam',
-    :git => 'https://github.com/hercules-team/augeasproviders_pam.git'
+    :git => 'https://github.com/hercules-team/augeasproviders_pam.git',
     :ref => 'e20796872f094c56a201519bab7716f099c78819' #2.1.1
 
 # local module /etc/puppet/code/local-modules/public/hostname

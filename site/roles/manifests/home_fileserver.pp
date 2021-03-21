@@ -45,7 +45,7 @@ class roles::home_fileserver {
   }
 
   class { 'minidlna':
-        dlna_listen_if => fact('networking.primary),
+        dlna_listen_if => fact('networking.primary'),
         dlna_media_dir => "/disks",
   }
 

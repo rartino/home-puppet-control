@@ -1,8 +1,6 @@
 # Home fileserver role
 class roles::home_fileserver {
 
-  include private_init
-
   include profiles::common
 
   class { '::ntp':

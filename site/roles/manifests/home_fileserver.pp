@@ -2,6 +2,7 @@
 class roles::home_fileserver {
 
   include profiles::common
+  include private_modules
 
   class { '::ntp':
     servers => [ 'pool.ntp.org' ],
@@ -42,6 +43,11 @@ class roles::home_fileserver {
     dport   => [137, 138],
     proto  => 'udp',
     action => 'accept',
+  }
+
+  class { 'minidlna':
+        dlna_listen_if => fact('networking.primary),
+        dlna_media_dir="/disks",
   }
 
 }

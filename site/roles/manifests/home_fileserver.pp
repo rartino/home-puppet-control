@@ -55,9 +55,9 @@ class roles::home_fileserver {
   }
 
   class { 'ripd':
-        ripdev="dvd1",
-	dvddir="/disks/minimoose/MEDIA/DVDRIPS",
-	cddir="/disks/minimoose/MEDIA/CDRIPS",
+        ripdev => "dvd1",
+	dvddir => "/disks/minimoose/MEDIA/DVDRIPS",
+	cddir => "/disks/minimoose/MEDIA/CDRIPS",
   }
 
 }

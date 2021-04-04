@@ -1,4 +1,11 @@
 #!/bin/bash
+#
+# This script provisions a fresh machine
+#
+# It is recommended that the repo hosting this script is cloned into:
+#   /root/puppet/puppet-control
+# and then the script executed: /root/puppet/puppet-control/bin/provision-ubuntu.sh
+#
 
 if [ "$EUID" -ne 0 ]; then
     echo "Please run as root"

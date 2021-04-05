@@ -40,11 +40,6 @@ class roles::home_fileserver {
 	  "/disks/pingu/MEDIA/CD/",
 	  "/disks/pinga/MEDIA/CD/",
 	],
-            #"V,/disks/pingu/MEDIA/DVD-MOVIES/",
-            #"V,/disks/pingu/MEDIA/DVD-SERIES/",
-            #"V,/disks/pinga/MEDIA/DVD-MOVIES/",
-            #"V,/disks/pinga/MEDIA/DVD-SERIES/",
-            "A,/disks/pinga/MEDIA/CD/"],
   }
 
   class { 'ripd':

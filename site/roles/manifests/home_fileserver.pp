@@ -60,4 +60,10 @@ class roles::home_fileserver {
 	cddir => "/disks/minimoose/MEDIA/CDRIPS",
   }
 
+  class { 'ldap::server':
+  }
+
+  class { 'ldap::client':
+  }
+
 }

@@ -3,7 +3,8 @@ class roles::home_fileserver {
 
   include profiles::common
 
-  class { 'accounts' }
+  class { 'accounts':
+  }
 
   class { '::ntp':
     servers => [ 'pool.ntp.org' ],

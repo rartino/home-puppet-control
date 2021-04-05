@@ -8,7 +8,7 @@ class roles::home_fileserver {
   }
 
   class { 'samba_fileserver':
-     use_ldap => true,
+     use_ldap => false,
   }
 
   #class { 'minidlna':

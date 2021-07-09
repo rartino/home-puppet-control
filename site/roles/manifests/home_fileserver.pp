@@ -1,7 +1,17 @@
 # Home fileserver role
-class roles::home_fileserver {
+class roles::home_fileserver(
+  main_net_if,
+  bridge_net_if = undef,
+) {
 
   include profiles::common
+
+  if $bridge_net_if != undef {
+    class { 'bridge':
+      main_net_if => $main_net_if,
+      bridge_net_if => $bridge_net_if,
+    }
+  }
 
   class { 'accounts':
   }

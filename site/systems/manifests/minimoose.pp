@@ -3,8 +3,12 @@ class systems::minimoose {
 
       class { 'hostname':
         hostname => "minimoose",
-        domain => "home"
+        domain => "home",
       }
 
-      include roles::home_fileserver
+      class { 'home_fileserver':
+	main_net_if => "eno1",
+	bridge_net_if => "enp1s0",
+      }
+
 }
